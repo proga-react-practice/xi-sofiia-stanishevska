@@ -3,7 +3,7 @@ import { Form } from "./assets/components/Form/Form.tsx";
 import { Cards } from "./assets/components/Cards/Cards.tsx";
 import "./App.css";
 
-interface Card {
+export interface Card {
   id: string;
   name: string;
   difficulty: string;
@@ -13,12 +13,7 @@ interface Card {
 const App: React.FC = () => {
   const [cards, setCards] = useState<Card[]>([]);
 
-  const handleFormSubmit = (newCard: {
-    id: string;
-    name: string;
-    difficulty: string;
-    price: number;
-  }) => {
+  const handleFormSubmit = (newCard: Card) => {
     setCards((prevCards) => [...prevCards, newCard]);
   };
 

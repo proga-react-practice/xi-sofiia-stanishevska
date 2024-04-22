@@ -1,13 +1,9 @@
 import "./Form.css";
 import React, { useState } from "react";
+import { Card } from "../../../App.tsx";
 
-interface Props {
-  onSubmit: (data: {
-    id: string;
-    name: string;
-    difficulty: string;
-    price: number;
-  }) => void;
+export interface Props {
+  onSubmit: (data: Card) => void;
 }
 
 export const Form: React.FC<Props> = ({ onSubmit }) => {
@@ -69,7 +65,9 @@ export const Form: React.FC<Props> = ({ onSubmit }) => {
           placeholder="Input the Game price"
           value={price}
           onChange={(e) =>
-            setPrice(e.target.value === "" ? "" : parseInt(e.target.value))
+            setPrice(
+              e.target.value === "" ? "" : Math.max(0, parseInt(e.target.value))
+            )
           }
         />
 
