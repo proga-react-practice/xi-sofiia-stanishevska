@@ -14,11 +14,6 @@
   font-family: "Chakra Petch", sans-serif;
 }
 
-.form {
-  /* padding: 20px; */
-  /* display: inline-block; */
-}
-
 .form-name {
   text-align: center;
   padding-bottom: 10px;
@@ -42,7 +37,7 @@
 
 ::placeholder {
   color: black;
-  opacity: 1; /* Firefox */
+  opacity: 1;
 }
 
 .input-label {
@@ -59,7 +54,6 @@
 #clear-btn {
   padding: 5px 37px;
   border: 0.5mm solid rgb(100, 100, 100);
-  /* margin-right: 5px; */
 }
 
 #clear-btn:hover,
