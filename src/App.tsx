@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import { Form } from "./assets/components/Form/Form.tsx";
+import { Cards } from "./assets/components/Cards/Cards.tsx";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+export interface Card {
+  id: string;
+  name: string;
+  difficulty: string;
+  price: number;
 }
 
-export default App
+const App: React.FC = () => {
+  const [cards, setCards] = useState<Card[]>([]);
+
+  const handleFormSubmit = (newCard: Card) => {
+    setCards((prevCards) => [...prevCards, newCard]);
+  };
+
+  const deleteCard = (id: string) => {
+    setCards((prevCards) => {
+      const filteredCards = prevCards.filter((card: Card) => card.id !== id);
+      return filteredCards;
+    });
+  };
+
+  return (
+    <div className="form-cards">
+      <div className="common-form-card">
+        <h1 className="naming">Registration Form</h1>
+        <Form onSubmit={handleFormSubmit} />
+      </div>
+      <div className="common-form-card">
+        <h1 className="naming">Submitted Cards</h1>
+        <Cards cards={cards} onDelete={deleteCard} />
+      </div>
+    </div>
+  );
+};
+
+export default App;
