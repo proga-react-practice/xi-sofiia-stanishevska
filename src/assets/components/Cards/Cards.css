@@ -1,50 +1,9 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-
-  font-family: "Chakra Petch", sans-serif;
-}
-
-.input-results {
-  display: flex;
-  align-items: baseline;
-  padding-bottom: 5px;
-}
-
-.card {
-  border: solid black;
-  width: 500px;
-  padding: 10px;
-  margin-bottom: 15px;
-}
-
-.all-cards {
-  display: flex;
-  flex-direction: column;
-}
-
 .criteria {
   width: 180px;
   text-align: right;
-  margin-right: 40px;
+  padding-right: 40px;
 }
 
-.input-results p {
+.value {
   text-align: left;
-}
-
-.btn-container {
-  display: flex;
-  justify-content: flex-end;
-}
-
-#delete-btn {
-  padding: 5px 15px;
-  border: 0.5mm solid rgb(100, 100, 100);
-}
-
-#delete-btn:hover,
-#delete-btn:active {
-  background-color: #dfdcdc;
 }

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Form } from "./assets/components/Form/Form.tsx";
 import { Cards } from "./assets/components/Cards/Cards.tsx";
-import "./App.css";
+import { Container, Typography } from "@mui/material";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import StyleIcon from "@mui/icons-material/Style";
 
 export interface Card {
   id: string;
@@ -25,16 +27,48 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="form-cards">
-      <div className="common-form-card">
-        <h1 className="naming">Registration Form</h1>
+    <Container sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Container>
+        <Typography
+          variant="h2"
+          sx={{
+            my: 4,
+            textAlign: "left",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <SportsEsportsIcon
+            sx={{
+              marginRight: 1,
+              fontSize: "2rem",
+            }}
+          />{" "}
+          Registration Form
+        </Typography>
         <Form onSubmit={handleFormSubmit} />
-      </div>
-      <div className="common-form-card">
-        <h1 className="naming">Submitted Cards</h1>
+      </Container>
+      <Container>
+        <Typography
+          variant="h2"
+          sx={{
+            my: 4,
+            textAlign: "right",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <StyleIcon
+            sx={{
+              marginRight: 1,
+              fontSize: "2rem",
+            }}
+          />{" "}
+          Submitted Cards
+        </Typography>
         <Cards cards={cards} onDelete={deleteCard} />
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 };
 
