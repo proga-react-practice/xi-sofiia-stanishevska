@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Form } from "./assets/components/Form/Form.tsx";
 import { Cards } from "./assets/components/Cards/Cards.tsx";
-import { Container, Typography } from "@mui/material";
+import Title from "./assets/components/Title.tsx";
+import { Container } from "@mui/material";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import StyleIcon from "@mui/icons-material/Style";
 
@@ -29,43 +30,11 @@ const App: React.FC = () => {
   return (
     <Container sx={{ display: "flex", justifyContent: "space-between" }}>
       <Container>
-        <Typography
-          variant="h2"
-          sx={{
-            my: 4,
-            textAlign: "left",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <SportsEsportsIcon
-            sx={{
-              marginRight: 1,
-              fontSize: "2rem",
-            }}
-          />{" "}
-          Registration Form
-        </Typography>
+        <Title icon={SportsEsportsIcon} title="Registration Form" />
         <Form onSubmit={handleFormSubmit} />
       </Container>
       <Container>
-        <Typography
-          variant="h2"
-          sx={{
-            my: 4,
-            textAlign: "right",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <StyleIcon
-            sx={{
-              marginRight: 1,
-              fontSize: "2rem",
-            }}
-          />{" "}
-          Submitted Cards
-        </Typography>
+        <Title icon={StyleIcon} title="Submitted Cards" />
         <Cards cards={cards} onDelete={deleteCard} />
       </Container>
     </Container>
