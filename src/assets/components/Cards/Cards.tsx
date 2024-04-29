@@ -1,5 +1,4 @@
 import React from "react";
-import "./Cards.css";
 import { Button } from "@mui/material";
 import { Container, Typography } from "@mui/material";
 
@@ -7,6 +6,28 @@ interface Props {
   cards: { id: string; name: string; difficulty: string; price: number }[];
   onDelete: (id: string) => void;
 }
+
+interface CardsInfoProps {
+  prop1: string;
+  prop2: string;
+}
+
+const CardsInfo: React.FC<CardsInfoProps> = ({ prop1, prop2 }) => {
+  console.log(typeof prop1);
+  console.log(typeof prop2);
+
+  return (
+    <Container sx={{ display: "flex" }}>
+      <Typography
+        variant="h4"
+        sx={{ width: 170, marginRight: 5, textAlign: "right" }}
+      >
+        {prop1}
+      </Typography>
+      <Typography>{prop2}</Typography>
+    </Container>
+  );
+};
 
 export const Cards: React.FC<Props> = ({ cards, onDelete }) => {
   return (
@@ -24,38 +45,9 @@ export const Cards: React.FC<Props> = ({ cards, onDelete }) => {
           }}
         >
           <Container>
-            <Container sx={{ display: "flex" }}>
-              <Typography
-                variant="h4"
-                className="criteria"
-                // sx={{ width: 170, marginRight: 5, textAlign: "right" }}
-              >
-                Name of the Game
-              </Typography>
-              <Typography className="value">{card.name}</Typography>
-            </Container>
-
-            <Container sx={{ display: "flex" }}>
-              <Typography
-                variant="h4"
-                className="criteria"
-                // sx={{ width: 170, marginRight: 5, textAlign: "right" }}
-              >
-                Difficulty
-              </Typography>
-              <Typography className="value">{card.difficulty}</Typography>
-            </Container>
-
-            <Container sx={{ display: "flex" }}>
-              <Typography
-                variant="h4"
-                className="criteria"
-                // sx={{ width: 170, marginRight: 5, textAlign: "right" }}
-              >
-                Price
-              </Typography>
-              <Typography className="value">{card.price}</Typography>
-            </Container>
+            <CardsInfo prop1="Name of the Game" prop2={card.name} />
+            <CardsInfo prop1="Difficulty" prop2={card.difficulty} />
+            <CardsInfo prop1="Price" prop2={card.price.toString()} />
 
             <Container
               sx={{
