@@ -5,6 +5,7 @@ import Title from "./assets/components/Title.tsx";
 import { Container } from "@mui/material";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import StyleIcon from "@mui/icons-material/Style";
+import "@fontsource/chakra-petch";
 
 export interface Card {
   id: string;
