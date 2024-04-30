@@ -10,6 +10,7 @@ export default function Title({ icon: Icon, title }: TitleProps) {
   return (
     <Typography
       variant="h2"
+      color="primary.main"
       sx={{
         my: 4,
         textAlign: "left",
