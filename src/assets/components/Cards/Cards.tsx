@@ -1,37 +1,65 @@
 import React from "react";
-import "./Cards.css";
+import { Button } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 
 interface Props {
   cards: { id: string; name: string; difficulty: string; price: number }[];
   onDelete: (id: string) => void;
 }
 
+interface CardsInfoProps {
+  title: string;
+  info: string;
+}
+
+const CardsInfo: React.FC<CardsInfoProps> = ({ title, info }) => {
+  return (
+    <Container sx={{ display: "flex" }}>
+      <Typography
+        variant="h4"
+        color="primary.main"
+        sx={{ width: 170, marginRight: 5, textAlign: "right" }}
+      >
+        {title}
+      </Typography>
+      <Typography>{info}</Typography>
+    </Container>
+  );
+};
+
 export const Cards: React.FC<Props> = ({ cards, onDelete }) => {
   return (
-    <div>
+    <Container disableGutters>
       {cards.map((card, index) => (
-        <div className="all-cards">
-          <div key={index} className="card">
-            <div className="input-results">
-              <h3 className="criteria">Name of the Game</h3>
-              <p>{card.name}</p>
-            </div>
-            <div className="input-results">
-              <h3 className="criteria">Difficulty</h3>
-              <p>{card.difficulty}</p>
-            </div>
-            <div className="input-results">
-              <h3 className="criteria">Price</h3>
-              <p>{card.price}</p>
-            </div>
-            <div className="btn-container">
-              <button onClick={() => onDelete(card.id)} id="delete-btn">
+        <Container
+          key={index}
+          sx={{
+            width: 550,
+            border: "1px solid",
+            borderRadius: 3,
+            borderColor: "text.primary",
+            py: 2.5,
+            marginBottom: 2.5,
+          }}
+        >
+          <Container>
+            <CardsInfo title="Name of the Game" info={card.name} />
+            <CardsInfo title="Difficulty" info={card.difficulty} />
+            <CardsInfo title="Price" info={card.price.toString()} />
+
+            <Container
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Button onClick={() => onDelete(card.id)} variant="outlined">
                 Delete
-              </button>
-            </div>
-          </div>
-        </div>
+              </Button>
+            </Container>
+          </Container>
+        </Container>
       ))}
-    </div>
+    </Container>
   );
 };

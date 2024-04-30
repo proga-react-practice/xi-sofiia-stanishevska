@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Form } from "./assets/components/Form/Form.tsx";
 import { Cards } from "./assets/components/Cards/Cards.tsx";
-import "./App.css";
+import Title from "./assets/components/Title.tsx";
+import { Container } from "@mui/material";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import StyleIcon from "@mui/icons-material/Style";
+import "@fontsource/chakra-petch";
 
 export interface Card {
   id: string;
@@ -25,16 +29,16 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="form-cards">
-      <div className="common-form-card">
-        <h1 className="naming">Registration Form</h1>
+    <Container sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Container>
+        <Title icon={SportsEsportsIcon} title="Registration Form" />
         <Form onSubmit={handleFormSubmit} />
-      </div>
-      <div className="common-form-card">
-        <h1 className="naming">Submitted Cards</h1>
+      </Container>
+      <Container>
+        <Title icon={StyleIcon} title="Submitted Cards" />
         <Cards cards={cards} onDelete={deleteCard} />
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 };
 

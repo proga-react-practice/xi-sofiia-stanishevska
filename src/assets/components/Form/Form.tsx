@@ -1,6 +1,8 @@
-import "./Form.css";
 import React, { useState } from "react";
 import { Card } from "../../../App.tsx";
+import { TextField, Select, MenuItem } from "@mui/material";
+import { InputLabel, Button } from "@mui/material";
+import { Container, Typography, FormControl } from "@mui/material";
 
 export interface Props {
   onSubmit: (data: Card) => void;
@@ -30,39 +32,54 @@ export const Form: React.FC<Props> = ({ onSubmit }) => {
   };
 
   return (
-    <div className="form">
-      <form onSubmit={handleSubmit} className="form-content">
-        <h3 className="form-name">Register the Game</h3>
+    <Container
+      sx={{
+        marginLeft: 0,
+        justifyContent: "left",
+        width: 350,
+        border: "1px solid",
+        borderRadius: 3,
+        borderColor: "text.primary",
+      }}
+    >
+      <form onSubmit={handleSubmit}>
+        <Typography
+          variant="h3"
+          color="primary.main"
+          sx={{ my: 2, textAlign: "center" }}
+        >
+          Register the Game
+        </Typography>
 
-        <label className="input-label">Name of Game</label>
-        <input
-          type="text"
-          className="inputs"
-          placeholder="Input the name of Game"
+        <TextField
+          fullWidth
+          label="Name of the Game"
+          variant="outlined"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
 
-        <label className="input-label">Kind of Difficulty</label>
-        <select
-          name="games"
-          id="games"
-          className="inputs"
-          value={difficulty}
-          onChange={(e) => setDifficulty(e.target.value)}
-        >
-          <option value="">Choose Difficulty</option>
-          <option value="Easy">Easy</option>
-          <option value="Medium">Medium</option>
-          <option value="Hard">Hard</option>
-          <option value="Expert">Expert</option>
-        </select>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Difficulty</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            label="Difficulty"
+            value={difficulty}
+            onChange={(e) => setDifficulty(e.target.value)}
+          >
+            <MenuItem value={"Easy"}>Easy</MenuItem>
+            <MenuItem value={"Medium"}>Medium</MenuItem>
+            <MenuItem value={"Hard"}>Hard</MenuItem>
+            <MenuItem value={"Expert"}>Expert</MenuItem>
+          </Select>
+        </FormControl>
 
-        <label className="input-label">Price</label>
-        <input
+        <TextField
+          fullWidth
+          label="Price"
           type="number"
-          className="inputs"
-          placeholder="Input the Game price"
+          variant="outlined"
           value={price}
           onChange={(e) =>
             setPrice(
@@ -71,15 +88,23 @@ export const Form: React.FC<Props> = ({ onSubmit }) => {
           }
         />
 
-        <div className="buttons">
-          <button id="clear-btn" type="button" onClick={handleClear}>
+        <Container
+          disableGutters
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: 2,
+            gap: 1,
+          }}
+        >
+          <Button variant="outlined" onClick={handleClear} sx={{ px: 5 }}>
             Clear
-          </button>
-          <button id="add-btn" type="submit">
+          </Button>
+          <Button variant="outlined" type="submit" sx={{ px: 10 }}>
             Add
-          </button>
-        </div>
+          </Button>
+        </Container>
       </form>
-    </div>
+    </Container>
   );
 };
