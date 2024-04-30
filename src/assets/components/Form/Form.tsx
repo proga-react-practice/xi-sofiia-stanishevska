@@ -1,4 +1,3 @@
-// import "./Form.css";
 import React, { useState } from "react";
 import { Card } from "../../../App.tsx";
 import { TextField, Select, MenuItem } from "@mui/material";
@@ -44,11 +43,16 @@ export const Form: React.FC<Props> = ({ onSubmit }) => {
       }}
     >
       <form onSubmit={handleSubmit}>
-        <Typography variant="h3" sx={{ my: 2, textAlign: "center" }}>
+        <Typography
+          variant="h3"
+          color="primary.main"
+          sx={{ my: 2, textAlign: "center" }}
+        >
           Register the Game
         </Typography>
 
         <TextField
+          fullWidth
           label="Name of the Game"
           variant="outlined"
           value={name}
@@ -72,6 +76,7 @@ export const Form: React.FC<Props> = ({ onSubmit }) => {
         </FormControl>
 
         <TextField
+          fullWidth
           label="Price"
           type="number"
           variant="outlined"
