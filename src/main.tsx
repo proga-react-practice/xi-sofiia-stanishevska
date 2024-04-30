@@ -3,10 +3,12 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import { ThemeProvider, createTheme } from "@mui/material";
 
-import "@fontsource/chakra-petch";
-
 const theme = createTheme({
   palette: {
+    primary: {
+      main: "#000",
+      contrastText: "#fff",
+    },
     background: {
       paper: "#fff",
     },
@@ -19,20 +21,18 @@ const theme = createTheme({
     },
   },
   typography: {
+    fontFamily: "Chakra Petch, sans-serif",
     h2: {
       fontSize: "2rem",
       fontWeight: 600,
-      fontFamily: "Chakra Petch, sans-serif",
     },
     h3: {
       fontSize: "1.5rem",
       fontWeight: 600,
-      fontFamily: "Chakra Petch, sans-serif",
     },
     h4: {
       fontSize: "1.2rem",
       fontWeight: 600,
-      fontFamily: "Chakra Petch, sans-serif",
     },
   },
   components: {
@@ -40,11 +40,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           display: "block",
-          width: "100%",
           "& .MuiInputBase-root": {
-            width: 350,
-            maxWidth: "100%",
-            display: "block",
+            width: 300,
             marginBottom: 10,
           },
           "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
@@ -56,9 +53,7 @@ const theme = createTheme({
     MuiSelect: {
       styleOverrides: {
         root: {
-          display: "block",
-          width: "100%",
-          marginBottom: 7,
+          marginBottom: 9,
           "& .MuiOutlinedInput-notchedOutline": {
             borderColor: "#000", // Apply border color to the outlined input
           },
@@ -71,6 +66,7 @@ const theme = createTheme({
         root: {
           color: "#000",
           borderColor: "#000",
+          fontWeight: 600,
           "&:hover": {
             backgroundColor: "rgb(150, 150, 150)",
             color: "#000",
